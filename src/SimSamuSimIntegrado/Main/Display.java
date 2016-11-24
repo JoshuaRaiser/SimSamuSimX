@@ -16,12 +16,14 @@ public class Display extends JPanel implements Runnable {
     private Ambulância ambu;
     private Paciênte pac;
     private Hospital hosp;
+    private Base base;
     
     public Display() {
         
         inicia();
         
-        ambu = new Ambulância(this);
+        base = new Base(this);
+        ambu = new Ambulância(this,base);
         pac  = new Paciênte(this);
         hosp = new Hospital(this);
         
@@ -30,16 +32,16 @@ public class Display extends JPanel implements Runnable {
         this.add(ambu);
         this.add(pac);
         this.add(hosp);
-        
+        this.add(base);
        
     }
 
     private void inicia() {
-        super.setSize(500, 300);   
     }
 
     @Override
     public void paint(Graphics g) {
+        
         super.paint(g); //To change body of generated methods, choose Tools | Templates.
         
         Image img = null;
@@ -54,6 +56,7 @@ public class Display extends JPanel implements Runnable {
         pac.paintComponent(g);
         ambu.paintComponent(g);
         hosp.paintComponent(g);
+        base.paintComponent(g);
     }   
 
     public Hospital getHosp() {
@@ -83,6 +86,14 @@ public class Display extends JPanel implements Runnable {
 
     public void setPac(Paciênte pac) {
         this.pac = pac;
+    }
+
+    public Base getBase() {
+        return base;
+    }
+
+    public void setBase(Base base) {
+        this.base = base;
     }
     
 }

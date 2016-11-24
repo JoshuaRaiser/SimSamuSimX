@@ -13,28 +13,28 @@ import javax.imageio.ImageIO;
 
 /**
  *
- * @author 5686563
+ * @author matheus
  */
-public class Hospital extends DisplayObject{
+public class Base extends DisplayObject{
 
     @Override
     public void moveTo(DisplayObject obj) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-        public Hospital(Display display) {
+        public Base(Display display) {
         
         super.setH(40);
         super.setW(40);
         super.setIsAmbDireita(true);
         
         super.setDisplay(display);
-        super.setX(550);
+        super.setX(50);
         super.setY(150);
         
         try {
-            this.setImgR(ImageIO.read(new File("src/SimSamuSimIntegrado/Images/hospital.jpg")));
-            this.setImgL(ImageIO.read(new File("src/SimSamuSimIntegrado/Images/hospital.jpg")));
+            this.setImgR(ImageIO.read(new File("src/SimSamuSimIntegrado/Images/samu.png")));
+            this.setImgL(ImageIO.read(new File("src/SimSamuSimIntegrado/Images/samu.png")));
         } catch (Exception ex) {
             Logger.getLogger(Ambulância.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -1,6 +1,5 @@
 package Data;
 
-
 import java.sql.Time;
 import java.util.Random;
 
@@ -35,11 +34,10 @@ public class AmostraSAMU implements IAmostra {
             newAmostra.setTempoAtendimento(Util.geraRandom(10, 20));
         }
         newAmostra.setFoiHospital(Util.geraRandom(1, 100));
-        if(newAmostra.foiHospital)
-        {
-            newAmostra.setTempoDeslHospital(newAmostra.getTempoDeslocamento()+Util.geraRandom(2, 4));
+        if (newAmostra.foiHospital) {
+            newAmostra.setTempoDeslHospital(newAmostra.getTempoDeslocamento() + Util.geraRandom(2, 4));
         }
-        newAmostra.setTempoRetorno(newAmostra.getTempoDeslocamento()+Util.geraRandom(1,2));
+        newAmostra.setTempoRetorno(newAmostra.getTempoDeslocamento() + Util.geraRandom(1, 2));
         return newAmostra;
     }
 
@@ -119,18 +117,16 @@ public class AmostraSAMU implements IAmostra {
     @Override
     public String toString() {
         String retorno = "";
-        retorno += "\nHora da Ocorrência: \t"+this.horaOcorrencia/60+":"+this.horaOcorrencia%60;
-        retorno += "\nNivel: \t\t\t"+this.nivelOcorrencia;
-        retorno += "\nTempo de Deslocamento: \t"+this.tempoDeslocamento;
-        retorno += "\nTempo de Atendimento: \t"+this.tempoAtendimento;
-        retorno += "\nFoi pro Hospital? \t"+this.foiHospital;
-        retorno += "\nTempo Desl. Hospital: \t"+this.tempoDeslHospital;
-        retorno += "\nTempo de Retorno: \t"+this.tempoRetorno;
-        retorno += "\nTempo de Preparo: \t"+this.tempoPreparo;
-        
+        retorno += "\nHora da Ocorrência: \t" + this.horaOcorrencia / 60 + ":" + this.horaOcorrencia % 60;
+        retorno += "\nNivel: \t\t\t" + this.nivelOcorrencia;
+        retorno += "\nTempo de Deslocamento: \t" + this.tempoDeslocamento;
+        retorno += "\nTempo de Atendimento: \t" + this.tempoAtendimento;
+        retorno += "\nFoi pro Hospital? \t" + this.foiHospital;
+        retorno += "\nTempo Desl. Hospital: \t" + this.tempoDeslHospital;
+        retorno += "\nTempo de Retorno: \t" + this.tempoRetorno;
+        retorno += "\nTempo de Preparo: \t" + this.tempoPreparo;
+
         return retorno;
     }
-    
-    
 
 }

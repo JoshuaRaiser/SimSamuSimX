@@ -24,8 +24,8 @@ public class Paciênte extends DisplayObject{
         super.setIsAmbDireita(true);
         
         super.setDisplay(display);
-        super.setX(super.getDisplay().getWidth() - super.getDisplay().getWidth()/8 - super.getH());
-        super.setY(super.getDisplay().getHeight() / 2 - super.getH() / 2);
+        super.setX(300);
+        super.setY(60);
         
         try {
             this.setImgR(ImageIO.read(new File("src/SimSamuSimIntegrado/Images/paciente.jpg")));

@@ -15,14 +15,14 @@ public class Ambulância extends DisplayObject implements Runnable {
     Queue<DisplayObject> targets;
     boolean leoPrange = false;
 
-    public Ambulância(Display display) {
+    public Ambulância(Display display, Base base) {
         super.setH(50);
         super.setW(50);
         super.setIsAmbDireita(true);
 
         super.setDisplay(display);
-        super.setX(super.getDisplay().getWidth() / 8);
-        super.setY(super.getDisplay().getHeight() / 2 - super.getW() / 2);
+        super.setX(base.getX());
+        super.setY(base.getY());
 
         targets = new LinkedList<DisplayObject>();
 
