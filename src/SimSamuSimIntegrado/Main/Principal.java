@@ -7,6 +7,7 @@ package SimSamuSimIntegrado.Main;
 
 import Data.AmostraSAMU;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -14,28 +15,36 @@ import javax.swing.table.DefaultTableModel;
  * @author 5660157
  */
 public class Principal extends javax.swing.JFrame {
-
     
-    private ArrayList<AmostraSAMU> amostras;
+    private LinkedList<AmostraSAMU> amostras;
+    private Engine engine;
     
     /**
      * Creates new form Principal
      */
     @SuppressWarnings("empty-statement")
     public Principal() {
+
         initComponents();
-        
-        display1.getAmbu().moveTo(display1.getPac());
-        display1.getAmbu().moveTo(display1.getHosp());
-        display1.getAmbu().moveTo(display1.getBase());
-        
+       
         String col[] = {"ID","Hr. Ocorrência","Tempo Chegada","Tempo Ação","Hospital?","Tempo Hospital","Tempo de retorno"};
         
         DefaultTableModel model = new DefaultTableModel(col, 0);
         Object[] objs = {1, "09:32", "4 minutos","9 minutos", "Sim", "5 minutos", "7 minutos"};
         model.addRow(objs);
         
+        
+        amostras = new LinkedList<AmostraSAMU>();
+        AmostraSAMU samu = new AmostraSAMU();
+        
         jTable2.setModel(model);
+        int x = 5; 
+        do
+        {
+            amostras.add((AmostraSAMU) samu.geraAmostra());
+            x--;
+        }
+        while(x!=0);
         
     }
 
@@ -57,6 +66,11 @@ public class Principal extends javax.swing.JFrame {
         setResizable(false);
 
         display1.setPreferredSize(new java.awt.Dimension(500, 300));
+        display1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                display1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout display1Layout = new javax.swing.GroupLayout(display1);
         display1.setLayout(display1Layout);
@@ -113,6 +127,13 @@ public class Principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void display1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_display1MouseClicked
+    
+        engine = new Engine(amostras,display1,this,jTable2);
+        engine.vai();
+        
+    }//GEN-LAST:event_display1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -146,6 +167,7 @@ public class Principal extends javax.swing.JFrame {
                 new Principal().setVisible(true);
             }
         });
+               
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

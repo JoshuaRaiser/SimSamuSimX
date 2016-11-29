@@ -96,4 +96,10 @@ public class Display extends JPanel implements Runnable {
         this.base = base;
     }
     
+    public void reset()
+    {
+        ambu = new Ambulância(this,this.getBase());
+        pac = new Paciênte(this);
+        repaint();
+    }
 }

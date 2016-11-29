@@ -129,4 +129,17 @@ public class AmostraSAMU implements IAmostra {
         return retorno;
     }
 
+    
+    public String[] toArray()
+    {
+        String[] retorno = {"0",
+            Integer.toString(this.getHoraOcorrencia()),
+            Integer.toString(this.getNivelOcorrencia()),
+            Integer.toString(this.getTempoAtendimento()),
+            Integer.toString(this.getTempoDeslHospital()),
+            Integer.toString(this.getTempoDeslocamento()),
+            Integer.toString(this.getTempoRetorno())};
+        
+        return retorno;
+    }
 }

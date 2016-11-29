@@ -22,7 +22,7 @@ public class Paciênte extends DisplayObject{
         super.setH(40);
         super.setW(40);
         super.setIsAmbDireita(true);
-        
+        super.exists = true;
         super.setDisplay(display);
         super.setX(300);
         super.setY(60);
