@@ -6,6 +6,7 @@
 package SimSamuSimIntegrado.Main;
 
 import Data.AmostraSAMU;
+import Data.CSVExport;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import javax.swing.table.DefaultTableModel;
@@ -15,10 +16,10 @@ import javax.swing.table.DefaultTableModel;
  * @author 5660157
  */
 public class Principal extends javax.swing.JFrame {
-    
+
     private LinkedList<AmostraSAMU> amostras;
     private Engine engine;
-    
+
     /**
      * Creates new form Principal
      */
@@ -26,28 +27,35 @@ public class Principal extends javax.swing.JFrame {
     public Principal() {
 
         initComponents();
-       
-        String col[] = {"ID","Hr. Ocorrência","Tempo Chegada","Tempo Ação","Hospital?","Tempo Hospital","Tempo de retorno"};
-        
-        DefaultTableModel model = new DefaultTableModel(col, 0);
-        Object[] objs = {1, "09:32", "4 minutos","9 minutos", "Sim", "5 minutos", "7 minutos"};
-        model.addRow(objs);
-        
-        
         amostras = new LinkedList<AmostraSAMU>();
-        AmostraSAMU samu = new AmostraSAMU();
-        
-        jTable2.setModel(model);
-        int x = 5; 
-        do
-        {
-            amostras.add((AmostraSAMU) samu.geraAmostra());
-            x--;
-        }
-        while(x!=0);
-        
+
     }
 
+    public void populaJTable()
+    {
+                
+        String cabecalho[] = 
+        {   
+            "ID", 
+            "Hr. Ocorrência", 
+            "Nivel Atendimento",
+            "Tempo Chegada", 
+            "Tempo Ação", 
+            "Hospital?", 
+            "Tempo Hospital", 
+            "Tempo de retorno"
+        };
+
+        DefaultTableModel model = new DefaultTableModel(cabecalho, 0);
+        
+        for (AmostraSAMU amostra : amostras) {
+            Object[] row = amostra.toArray();
+            model.addRow(row);
+        }
+        
+        jTable2.setModel(model);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -61,6 +69,10 @@ public class Principal extends javax.swing.JFrame {
         display1 = new SimSamuSimIntegrado.Main.Display();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -76,7 +88,7 @@ public class Principal extends javax.swing.JFrame {
         display1.setLayout(display1Layout);
         display1Layout.setHorizontalGroup(
             display1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 658, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         display1Layout.setVerticalGroup(
             display1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,8 +114,8 @@ public class Principal extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(display1, javax.swing.GroupLayout.PREFERRED_SIZE, 658, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 658, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 980, Short.MAX_VALUE)
+            .addComponent(display1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 980, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,11 +125,30 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+        jMenu1.setText("File");
+
+        jMenuItem1.setText("Exporta CSV");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,11 +159,18 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void display1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_display1MouseClicked
-    
-        engine = new Engine(amostras,display1,this,jTable2);
+
+        engine = new Engine(amostras, display1, this, jTable2);
         engine.vai();
-        
+
     }//GEN-LAST:event_display1MouseClicked
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+       
+        this.amostras = (Data.SimSamu.geraValores());
+        this.populaJTable();
+
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -167,11 +205,15 @@ public class Principal extends javax.swing.JFrame {
                 new Principal().setVisible(true);
             }
         });
-               
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private SimSamuSimIntegrado.Main.Display display1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable2;

@@ -5,6 +5,18 @@ import java.util.Random;
 
 public class AmostraSAMU implements IAmostra {
 
+    private static int idGen = 1;
+
+    public static int getIdGen() {
+        return idGen;
+    }
+
+    public static void setIdGen(int aIdGen) {
+        idGen = aIdGen;
+    }
+
+    int id;
+
     private int horaOcorrencia;    // minutos 
     private int nivelOcorrencia;   // 1 Urg. 2 Bas.
 
@@ -20,10 +32,14 @@ public class AmostraSAMU implements IAmostra {
 
     static int ultimaOcorrência = 0;
 
+    public AmostraSAMU() {
+
+    }
+
     @Override
     public IAmostra geraAmostra() {
         AmostraSAMU newAmostra = new AmostraSAMU();
-
+        newAmostra.setId(idGen);
         newAmostra.setHoraOcorrencia(Util.geraRandom(0, 1440));
         newAmostra.setNivelOcorrencia(Util.geraRandom(1, 2));
         if (newAmostra.nivelOcorrencia == 1) {
@@ -38,6 +54,7 @@ public class AmostraSAMU implements IAmostra {
             newAmostra.setTempoDeslHospital(newAmostra.getTempoDeslocamento() + Util.geraRandom(2, 4));
         }
         newAmostra.setTempoRetorno(newAmostra.getTempoDeslocamento() + Util.geraRandom(1, 2));
+        idGen++;
         return newAmostra;
     }
 
@@ -75,13 +92,13 @@ public class AmostraSAMU implements IAmostra {
 
     public void setFoiHospital(int valor) {
         if (this.nivelOcorrencia == 1) {
-            if (valor > 30) {
+            if (valor > 20) {
                 this.foiHospital = false;
             } else {
                 this.foiHospital = true;
             }
         } else {
-            if (valor > 15) {
+            if (valor > 80) {
                 this.foiHospital = false;
             } else {
                 this.foiHospital = true;
@@ -113,6 +130,27 @@ public class AmostraSAMU implements IAmostra {
         this.horaOcorrencia = horaOcorrencia;
         AmostraSAMU.ultimaOcorrência = horaOcorrencia;
     }
+    
+    public String getHoraOcorrenciaFormatada() {
+        
+        String hora;
+        String minuto;
+        
+        hora = Integer.toString(this.getHoraOcorrencia()/60);
+        minuto = Integer.toString(this.getHoraOcorrencia()%60);
+        
+        if(this.getHoraOcorrencia()/60 < 10)
+        {
+            hora = "0"+hora;
+        }
+        if(this.getHoraOcorrencia()%60 < 10)
+        {
+            minuto = "0"+minuto;
+        }
+
+        return hora+ ":" +minuto;
+    }
+
 
     @Override
     public String toString() {
@@ -129,17 +167,33 @@ public class AmostraSAMU implements IAmostra {
         return retorno;
     }
 
-    
-    public String[] toArray()
-    {
-        String[] retorno = {"0",
-            Integer.toString(this.getHoraOcorrencia()),
+    public String[] toArray() {
+        String[] retorno = {
+            Integer.toString(this.getId()),
+            this.getHoraOcorrenciaFormatada(),
             Integer.toString(this.getNivelOcorrencia()),
-            Integer.toString(this.getTempoAtendimento()),
-            Integer.toString(this.getTempoDeslHospital()),
             Integer.toString(this.getTempoDeslocamento()),
+            Integer.toString(this.getTempoAtendimento()),
+            Boolean.toString(this.isFoiHospital()),
+            Integer.toString(this.getTempoDeslHospital()),
             Integer.toString(this.getTempoRetorno())};
-        
+
         return retorno;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public static int getUltimaOcorrência() {
+        return ultimaOcorrência;
+    }
+
+    public static void setUltimaOcorrência(int ultimaOcorrência) {
+        AmostraSAMU.ultimaOcorrência = ultimaOcorrência;
     }
 }
