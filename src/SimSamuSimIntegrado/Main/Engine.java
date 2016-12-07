@@ -1,6 +1,6 @@
 package SimSamuSimIntegrado.Main;
 
-import Data.AmostraSAMU;
+import SimSamuSimIntegrado.Data.AmostraSAMU;
 import java.util.LinkedList;
 import javax.swing.JFrame;
 import javax.swing.JTable;

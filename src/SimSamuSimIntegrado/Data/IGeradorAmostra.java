@@ -1,4 +1,4 @@
-package Data;
+package SimSamuSimIntegrado.Data;
 
 public interface IGeradorAmostra {
     public IAmostra geraAmostra();

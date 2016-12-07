@@ -1,4 +1,4 @@
-package Data;
+package SimSamuSimIntegrado.Data;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -9,7 +9,7 @@ public class SimSamu {
     public static LinkedList<AmostraSAMU> geraValores() {
         LinkedList<AmostraSAMU> amostras = new LinkedList<AmostraSAMU>();
 
-        String conteudo = "Hora da Ocorrência;"
+        String conteudo = "Hora da Ocorrência*;"
                 + "Nível de Urgência;"
                 + "Tempo de Descolamento*;"
                 + "Tempo de Atendimento*;"
@@ -32,16 +32,18 @@ public class SimSamu {
             } else {
                 foi = "Não";
             }
-            conteudo += amostraTeste.getHoraOcorrencia() / 60 + ":" + amostraTeste.getHoraOcorrencia() % 60 + ";"
-                    + amostraTeste.getNivelOcorrencia() + ";"
-                    + amostraTeste.getTempoDeslocamento() + ";"
-                    + amostraTeste.getTempoAtendimento() + ";"
-                    + foi + ";"
-                    + amostraTeste.getTempoDeslHospital() + ";"
-                    + amostraTeste.getTempoRetorno() + "\n";
+            conteudo += 
+                      //amostraTeste.getHoraOcorrencia() / 60 + ":" + amostraTeste.getHoraOcorrencia() % 60 + ";"
+                      amostraTeste.getHoraOcorrencia()      + ";"
+                    + amostraTeste.getNivelOcorrencia()     + ";"
+                    + amostraTeste.getTempoDeslocamento()   + ";"
+                    + amostraTeste.getTempoAtendimento()    + ";"
+                    + foi                                   + ";"
+                    + amostraTeste.getTempoDeslHospital()   + ";"
+                    + amostraTeste.getTempoRetorno()        + "\n";
         }
-
-        conteudo += "\n*= tempo em minutos\n";
+        
+        conteudo += "\n*= tempo em minutos";
         CSVExport csv = new CSVExport();
         csv.createCsvFile(conteudo);
 

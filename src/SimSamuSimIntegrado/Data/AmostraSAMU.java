@@ -1,7 +1,8 @@
-package Data;
+package SimSamuSimIntegrado.Data;
 
 import java.sql.Time;
 import java.util.Random;
+import jdistlib.Beta;
 
 public class AmostraSAMU implements IAmostra {
 
@@ -41,19 +42,26 @@ public class AmostraSAMU implements IAmostra {
         AmostraSAMU newAmostra = new AmostraSAMU();
         newAmostra.setId(idGen);
         newAmostra.setHoraOcorrencia(Util.geraRandom(0, 1440));
+//        newAmostra.setHoraOcorrencia( 16 + 1.42e+003 * beta(0.856, 0775) );
         newAmostra.setNivelOcorrencia(Util.geraRandom(1, 2));
         if (newAmostra.nivelOcorrencia == 1) {
             newAmostra.setTempoDeslocamento(Util.geraRandom(4, 10));
+//            newAmostra.setTempoDeslocamento(3.5 + 15 * beta(0.556, 0.775));
             newAmostra.setTempoAtendimento(Util.geraRandom(5, 15));
+//            newAmostra.setTempoAtendimento(4.5 + 16 * beta(0.856, 0.775));
         } else {
             newAmostra.setTempoDeslocamento(Util.geraRandom(10, 18));
+//            newAmostra.setTempoDeslocamento(3.5 + 15 * beta(0.556, 0.775));
             newAmostra.setTempoAtendimento(Util.geraRandom(10, 20));
+//            newAmostra.setTempoAtendimento(4.5 + 16 * beta(0.856, 0.775));
         }
         newAmostra.setFoiHospital(Util.geraRandom(1, 100));
         if (newAmostra.foiHospital) {
             newAmostra.setTempoDeslHospital(newAmostra.getTempoDeslocamento() + Util.geraRandom(2, 4));
+//            newAmostra.setTempoDeslHospital(-0.5 + 23 * beta(0.856,0.775));
         }
         newAmostra.setTempoRetorno(newAmostra.getTempoDeslocamento() + Util.geraRandom(1, 2));
+//        newAmostra.setTempoRetorno(4.5 + 16 * beta(0.856,0.775));
         idGen++;
         return newAmostra;
     }

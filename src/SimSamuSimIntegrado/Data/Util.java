@@ -1,4 +1,4 @@
-package Data;
+package SimSamuSimIntegrado.Data;
 
 import java.util.Collections;
 import java.util.Comparator;

@@ -1,4 +1,4 @@
-package Data;
+package SimSamuSimIntegrado.Data;
 
 public class GeradorAmostraSamu implements IGeradorAmostra
 {

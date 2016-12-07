@@ -8,7 +8,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
-import Data.*;
 import java.util.ArrayList;
 
 public class Display extends JPanel implements Runnable {
