@@ -2,7 +2,7 @@ package SimSamuSimIntegrado.Data;
 
 import java.sql.Time;
 import java.util.Random;
-import jdistlib.Beta;
+//import jdistlib.Beta;
 
 public class AmostraSAMU implements IAmostra {
 
@@ -30,7 +30,9 @@ public class AmostraSAMU implements IAmostra {
     private int tempoRetorno;      // Minutos
 
     static final int tempoPreparo = 5; // Minutos   
-
+    private int termino;
+    private int fila;
+    
     static int ultimaOcorrência = 0;
 
     public AmostraSAMU() {
@@ -203,5 +205,21 @@ public class AmostraSAMU implements IAmostra {
 
     public static void setUltimaOcorrência(int ultimaOcorrência) {
         AmostraSAMU.ultimaOcorrência = ultimaOcorrência;
+    }
+
+    public int getTermino() {
+        return termino;
+    }
+
+    public void setTermino(int termino) {
+        this.termino = termino;
+    }
+
+    public int getFila() {
+        return fila;
+    }
+
+    public void setFila(int fila) {
+        this.fila = fila;
     }
 }

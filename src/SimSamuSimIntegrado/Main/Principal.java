@@ -7,6 +7,7 @@ package SimSamuSimIntegrado.Main;
 
 import SimSamuSimIntegrado.Data.AmostraSAMU;
 import SimSamuSimIntegrado.Data.CSVExport;
+import SimSamuSimIntegrado.Data.Util;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import javax.swing.table.DefaultTableModel;
@@ -168,8 +169,8 @@ public class Principal extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
        
         this.amostras = (SimSamuSimIntegrado.Data.SimSamu.geraValores());
+        this.amostras = Util.ordenaAtendimento(amostras);
         this.populaJTable();
-
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**

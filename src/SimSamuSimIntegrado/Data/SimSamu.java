@@ -53,13 +53,6 @@ public class SimSamu {
                 return Integer.compare(fruit2.getHoraOcorrencia(),fruit1.getHoraOcorrencia());
             }
         });
-        Collections.sort(amostras, new Comparator<AmostraSAMU>() {
-            @Override
-            public int compare(AmostraSAMU fruit2, AmostraSAMU fruit1) {
-                return Integer.compare(fruit2.getNivelOcorrencia(), fruit1.getNivelOcorrencia());
-            }
-        });
-
         return amostras;
     }
 }
