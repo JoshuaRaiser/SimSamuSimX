@@ -44,7 +44,9 @@ public class Principal extends javax.swing.JFrame {
             "Tempo Ação", 
             "Hospital?", 
             "Tempo Hospital", 
-            "Tempo de retorno"
+            "Tempo de retorno",
+            "Término",
+            "Fila(minutos)"
         };
 
         DefaultTableModel model = new DefaultTableModel(cabecalho, 0);
@@ -73,7 +75,6 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -126,9 +127,9 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jMenu1.setText("File");
+        jMenu1.setText("Ação");
 
-        jMenuItem1.setText("Exporta CSV");
+        jMenuItem1.setText("Inicia");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -137,9 +138,6 @@ public class Principal extends javax.swing.JFrame {
         jMenu1.add(jMenuItem1);
 
         jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -160,17 +158,18 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void display1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_display1MouseClicked
-
-        engine = new Engine(amostras, display1, this, jTable2);
-        engine.vai();
-
+        
     }//GEN-LAST:event_display1MouseClicked
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
        
         this.amostras = (SimSamuSimIntegrado.Data.SimSamu.geraValores());
-        this.amostras = Util.ordenaAtendimento(amostras);
+        this.amostras = Util.processaAtendimento(amostras);
         this.populaJTable();
+        
+        engine = new Engine(amostras, display1, this, jTable2);
+        engine.start();
+
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
@@ -212,7 +211,6 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private SimSamuSimIntegrado.Main.Display display1;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel2;

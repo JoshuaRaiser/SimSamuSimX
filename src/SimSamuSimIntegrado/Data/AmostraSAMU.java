@@ -141,19 +141,19 @@ public class AmostraSAMU implements IAmostra {
         AmostraSAMU.ultimaOcorrência = horaOcorrencia;
     }
     
-    public String getHoraOcorrenciaFormatada() {
+    public String getHoraFormatada(int n) {
         
         String hora;
         String minuto;
         
-        hora = Integer.toString(this.getHoraOcorrencia()/60);
-        minuto = Integer.toString(this.getHoraOcorrencia()%60);
+        hora = Integer.toString(n/60);
+        minuto = Integer.toString(n%60);
         
-        if(this.getHoraOcorrencia()/60 < 10)
+        if(n/60 < 10)
         {
             hora = "0"+hora;
         }
-        if(this.getHoraOcorrencia()%60 < 10)
+        if(n%60 < 10)
         {
             minuto = "0"+minuto;
         }
@@ -180,13 +180,15 @@ public class AmostraSAMU implements IAmostra {
     public String[] toArray() {
         String[] retorno = {
             Integer.toString(this.getId()),
-            this.getHoraOcorrenciaFormatada(),
+            this.getHoraFormatada(this.getHoraOcorrencia()),
             Integer.toString(this.getNivelOcorrencia()),
             Integer.toString(this.getTempoDeslocamento()),
             Integer.toString(this.getTempoAtendimento()),
             Boolean.toString(this.isFoiHospital()),
             Integer.toString(this.getTempoDeslHospital()),
-            Integer.toString(this.getTempoRetorno())};
+            Integer.toString(this.getTempoRetorno()),
+            this.getHoraFormatada(this.getTermino()),
+           this.getHoraFormatada(this.getFila())};
 
         return retorno;
     }

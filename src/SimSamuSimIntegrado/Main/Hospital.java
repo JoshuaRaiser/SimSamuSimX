@@ -29,7 +29,7 @@ public class Hospital extends DisplayObject{
         super.setIsAmbDireita(true);
         
         super.setDisplay(display);
-        super.setX(550);
+        super.setX(800);
         super.setY(150);
         
         try {

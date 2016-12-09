@@ -16,6 +16,7 @@ public class Display extends JPanel implements Runnable {
     private Paciênte pac;
     private Hospital hosp;
     private Base base;
+    Thread t;
     
     public Display() {
         
@@ -26,36 +27,28 @@ public class Display extends JPanel implements Runnable {
         pac  = new Paciênte(this);
         hosp = new Hospital(this);
         
-        pac.setY(pac.getY()+100);
-        
         this.add(ambu);
         this.add(pac);
         this.add(hosp);
         this.add(base);
-       
     }
 
     private void inicia() {
+        t = new Thread(this);
+        t.start();
     }
 
     @Override
     public void paint(Graphics g) {
         
-        super.paint(g); //To change body of generated methods, choose Tools | Templates.
+        super.paint(g); //To change body of generated methods, choose Tools | Templates.   
         
-        Image img = null;
-        try {
-            img = ImageIO.read(new File("src/SimSamuSimIntegrado/Images/bg.png"));
-        } catch (IOException ex) {
-            Logger.getLogger(Display.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        
-        g.drawImage(img, 0, 0, this);
         pac.paintComponent(g);
         ambu.paintComponent(g);
         hosp.paintComponent(g);
         base.paintComponent(g);
+        
+        this.inicia();
     }   
 
     public Hospital getHosp() {
@@ -68,7 +61,9 @@ public class Display extends JPanel implements Runnable {
 
     @Override
     public void run() {
-        
+       
+            repaint();
+            
     }
 
     public Ambulância getAmbu() {
@@ -99,6 +94,11 @@ public class Display extends JPanel implements Runnable {
     {
         ambu = new Ambulância(this,this.getBase());
         pac = new Paciênte(this);
+        repaint();
+    }
+    
+    public void pintaNice()
+    {
         repaint();
     }
 }

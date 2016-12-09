@@ -21,42 +21,39 @@ public class Engine implements Runnable {
         this.jTable = jTable;
     }
 
-    public void vai() {
-        this.start();
+    public void start() {
+
+        engThread = new Thread(this);
+        engThread.start();
     }
 
-    public void start()
-    {
-        if(engThread == null)
-        {
-            engThread = new Thread(this);
-            engThread.start();
-        }
-    }
-    
-    @Override
     public void run() {
 
-        while (!amostras.isEmpty()) {
+        LinkedList<AmostraSAMU> itens = amostras;
+        int cont = 0;
+        while (!itens.isEmpty()) {
             
-            ((DefaultTableModel) jTable.getModel()).addRow(amostras.peek().toArray());
-
-            //PROCESSA
-            //atualiza Tabela
-            //{{{{{{ QUEUE DE MOVIMENTO
+            jTable.setRowSelectionInterval(cont,cont++);
+            
+            jTable.repaint();
             display.getAmbu().moveTo(display.getPac());
-            display.getAmbu().moveTo(display.getHosp());
-            display.getAmbu().moveTo(display.getBase());
-            //}}}}}} QUEUE DE MOVIMENTO
 
-            while (display.getAmbu().runner.isAlive()) {
-                System.out.println("x");
+            if (itens.peek().isFoiHospital()) {
+                display.getPac().kill();
+                display.getAmbu().moveTo(display.getHosp());
             }
-            amostras.remove();
+
+            display.getAmbu().moveTo(display.getBase());
+
+            itens.remove();
+
+            jTable.clearSelection();
+            
+            this.display.reset();
         }
         this.stop();
     }
-    
+
     public void stop() {
         if (engThread != null) {
             engThread = null;
