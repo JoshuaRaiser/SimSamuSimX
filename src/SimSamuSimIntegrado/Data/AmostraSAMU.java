@@ -178,13 +178,14 @@ public class AmostraSAMU implements IAmostra {
     }
 
     public String[] toArray() {
+//        String foi = (this.isFoiHospital() ? "sim" : "não");
         String[] retorno = {
             Integer.toString(this.getId()),
             this.getHoraFormatada(this.getHoraOcorrencia()),
             Integer.toString(this.getNivelOcorrencia()),
             Integer.toString(this.getTempoDeslocamento()),
             Integer.toString(this.getTempoAtendimento()),
-            Boolean.toString(this.isFoiHospital()),
+            (this.isFoiHospital() ? "sim" : "não"),
             Integer.toString(this.getTempoDeslHospital()),
             Integer.toString(this.getTempoRetorno()),
             this.getHoraFormatada(this.getTermino()),
