@@ -46,7 +46,7 @@ public class Principal extends javax.swing.JFrame {
             "Tempo Hospital", 
             "Tempo de retorno",
             "Término",
-            "Fila(minutos)"
+            "Fila"
         };
 
         DefaultTableModel model = new DefaultTableModel(cabecalho, 0);
