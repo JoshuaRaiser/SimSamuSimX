@@ -9,11 +9,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
-public class Ambulância extends DisplayObject {
+public class Ambulancia extends DisplayObject {
 
     Display pai;
 
-    public Ambulância(Display display, Base base) {
+    public Ambulancia(Display display, Base base) {
         super.setH(40);
         super.setW(40);
         super.setIsAmbDireita(true);
@@ -27,7 +27,7 @@ public class Ambulância extends DisplayObject {
             this.setImgR(ImageIO.read(new File("src/SimSamuSimIntegrado/Images/ambuR.jpg")));
             this.setImgL(ImageIO.read(new File("src/SimSamuSimIntegrado/Images/ambuL.jpg")));
         } catch (Exception ex) {
-            Logger.getLogger(Ambulância.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Ambulancia.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

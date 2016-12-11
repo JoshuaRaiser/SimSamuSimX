@@ -36,7 +36,7 @@ public class Base extends DisplayObject{
             this.setImgR(ImageIO.read(new File("src/SimSamuSimIntegrado/Images/samu.png")));
             this.setImgL(ImageIO.read(new File("src/SimSamuSimIntegrado/Images/samu.png")));
         } catch (Exception ex) {
-            Logger.getLogger(Ambulância.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Ambulancia.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

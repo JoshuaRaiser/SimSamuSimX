@@ -12,8 +12,8 @@ import java.util.ArrayList;
 
 public class Display extends JPanel implements Runnable {
 
-    private Ambulância ambu;
-    private Paciênte pac;
+    private Ambulancia ambu;
+    private Paciente pac;
     private Hospital hosp;
     private Base base;
     Thread t;
@@ -23,8 +23,8 @@ public class Display extends JPanel implements Runnable {
         inicia();
         
         base = new Base(this);
-        ambu = new Ambulância(this,base);
-        pac  = new Paciênte(this);
+        ambu = new Ambulancia(this,base);
+        pac  = new Paciente(this);
         hosp = new Hospital(this);
         
         this.add(ambu);
@@ -66,19 +66,19 @@ public class Display extends JPanel implements Runnable {
             
     }
 
-    public Ambulância getAmbu() {
+    public Ambulancia getAmbu() {
         return ambu;
     }
 
-    public void setAmbu(Ambulância ambu) {
+    public void setAmbu(Ambulancia ambu) {
         this.ambu = ambu;
     }
 
-    public Paciênte getPac() {
+    public Paciente getPac() {
         return pac;
     }
 
-    public void setPac(Paciênte pac) {
+    public void setPac(Paciente pac) {
         this.pac = pac;
     }
 
@@ -92,8 +92,8 @@ public class Display extends JPanel implements Runnable {
     
     public void reset()
     {
-        ambu = new Ambulância(this,this.getBase());
-        pac = new Paciênte(this);
+        ambu = new Ambulancia(this,this.getBase());
+        pac = new Paciente(this);
         repaint();
     }
     

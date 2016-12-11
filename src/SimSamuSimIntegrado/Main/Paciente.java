@@ -15,9 +15,9 @@ import javax.imageio.ImageIO;
  *
  * @author 5686563
  */
-public class Paciênte extends DisplayObject{
+public class Paciente extends DisplayObject{
 
-    public Paciênte(Display display) {
+    public Paciente(Display display) {
         
         super.setH(40);
         super.setW(40);
@@ -31,7 +31,7 @@ public class Paciênte extends DisplayObject{
             this.setImgR(ImageIO.read(new File("src/SimSamuSimIntegrado/Images/paciente.jpg")));
             this.setImgL(ImageIO.read(new File("src/SimSamuSimIntegrado/Images/paciente.jpg")));
         } catch (Exception ex) {
-            Logger.getLogger(Ambulância.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Ambulancia.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

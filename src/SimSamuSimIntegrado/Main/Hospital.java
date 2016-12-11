@@ -36,7 +36,7 @@ public class Hospital extends DisplayObject{
             this.setImgR(ImageIO.read(new File("src/SimSamuSimIntegrado/Images/hospital.jpg")));
             this.setImgL(ImageIO.read(new File("src/SimSamuSimIntegrado/Images/hospital.jpg")));
         } catch (Exception ex) {
-            Logger.getLogger(Ambulância.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Ambulancia.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
