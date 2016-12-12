@@ -14,8 +14,8 @@ public class Ambulancia extends DisplayObject {
     Display pai;
 
     public Ambulancia(Display display, Base base) {
-        super.setH(40);
-        super.setW(40);
+        super.setH(80);
+        super.setW(80);
         super.setIsAmbDireita(true);
 
         super.setDisplay(display);
@@ -24,8 +24,8 @@ public class Ambulancia extends DisplayObject {
         pai = display;
 
         try {
-            this.setImgR(ImageIO.read(new File("src/SimSamuSimIntegrado/Images/ambuR.jpg")));
-            this.setImgL(ImageIO.read(new File("src/SimSamuSimIntegrado/Images/ambuL.jpg")));
+            this.setImgR(ImageIO.read(new File("src/SimSamuSimIntegrado/Images/ambuR.png")));
+            this.setImgL(ImageIO.read(new File("src/SimSamuSimIntegrado/Images/ambuL.png")));
         } catch (Exception ex) {
             Logger.getLogger(Ambulancia.class.getName()).log(Level.SEVERE, null, ex);
         }

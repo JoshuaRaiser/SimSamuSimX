@@ -24,8 +24,8 @@ public class Hospital extends DisplayObject{
     
         public Hospital(Display display) {
         
-        super.setH(40);
-        super.setW(40);
+        super.setH(80);
+        super.setW(80);
         super.setIsAmbDireita(true);
         
         super.setDisplay(display);
@@ -33,8 +33,8 @@ public class Hospital extends DisplayObject{
         super.setY(150);
         
         try {
-            this.setImgR(ImageIO.read(new File("src/SimSamuSimIntegrado/Images/hospital.jpg")));
-            this.setImgL(ImageIO.read(new File("src/SimSamuSimIntegrado/Images/hospital.jpg")));
+            this.setImgR(ImageIO.read(new File("src/SimSamuSimIntegrado/Images/hospital.png")));
+            this.setImgL(ImageIO.read(new File("src/SimSamuSimIntegrado/Images/hospital.png")));
         } catch (Exception ex) {
             Logger.getLogger(Ambulancia.class.getName()).log(Level.SEVERE, null, ex);
         }
