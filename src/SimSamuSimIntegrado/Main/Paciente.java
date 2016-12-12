@@ -19,8 +19,8 @@ public class Paciente extends DisplayObject{
 
     public Paciente(Display display) {
         
-        super.setH(40);
-        super.setW(40);
+        super.setH(80);
+        super.setW(80);
         super.setIsAmbDireita(true);
         super.exists = true;
         super.setDisplay(display);
@@ -28,8 +28,8 @@ public class Paciente extends DisplayObject{
         super.setY(150);
         
         try {
-            this.setImgR(ImageIO.read(new File("src/SimSamuSimIntegrado/Images/paciente.jpg")));
-            this.setImgL(ImageIO.read(new File("src/SimSamuSimIntegrado/Images/paciente.jpg")));
+            this.setImgR(ImageIO.read(new File("src/Images/paciente.png")));
+            this.setImgL(ImageIO.read(new File("src/Images/paciente.png")));
         } catch (Exception ex) {
             Logger.getLogger(Ambulancia.class.getName()).log(Level.SEVERE, null, ex);
         }

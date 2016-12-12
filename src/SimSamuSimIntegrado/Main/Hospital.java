@@ -24,8 +24,8 @@ public class Hospital extends DisplayObject{
     
         public Hospital(Display display) {
         
-        super.setH(40);
-        super.setW(40);
+        super.setH(80);
+        super.setW(80);
         super.setIsAmbDireita(true);
         
         super.setDisplay(display);
